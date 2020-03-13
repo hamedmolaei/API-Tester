@@ -1,0 +1,54 @@
+<div class="row" *ngIf="response">
+  <div class="col-9">
+    <input disabled [className]="response.original.status>=200 && response.original.status<300 ? 'form-control bg-success text-white':'form-control bg-danger text-white'" value="Response Status : {{response ?response.original.status:''}}" />
+  </div>
+  <div class="col-3">
+    <button class="btn btn-info" data-toggle="modal" (click)="showResponse()" style="width:100%">Show Response</button>
+  </div>
+</div>
+
+<div class="modal fade" id="respose-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Response Summery</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="container">
+          <div class="row" style="margin-bottom:5px">
+            <div class="col-12">
+              <input disabled [className]="response && response.original.status>=200 && response.original.status<300 ? 'form-control bg-success text-white':'form-control bg-danger text-white'" value="Status Code : {{response ?response.original.status:''}}" />
+            </div>
+          </div>
+          <div class="row" style="margin-bottom:5px">
+            <div class="col-12">
+              <input disabled class="form-control" [value]="response && response.request.url" />
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12">
+              <nav>
+                <div class="nav nav-tabs" id="nav-response" role="tablist">
+                  <a class="nav-item nav-link active" id="tab-request-headers" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true" (click)="setResponseContent('RequestHeaders')">Request Headers</a>
+                  <a class="nav-item nav-link" id="tab-response-headers" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false" (click)="setResponseContent('ResponseHeaders')">Response Headers</a>
+                  <a class="nav-item nav-link" id="tab-response-body" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false" (click)="setResponseContent('ResponseBody')">Response Body</a>
+                </div>
+              </nav>
+              <div class="tab-content" id="nav-tabContent">
+                <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                  <textarea disabled id="txtResponseBody" class="form-control" style="height:150px;width:100%" [value]="responseContent"></textarea>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,55 @@
+<div class="row">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-header">
+        <div class="row">
+          <div class="col-9">
+            History
+          </div>
+          <div class="col-3">
+            <a href="#" class="close" role="button" (click)="clearHistory()" data-toggle="tooltip" data-placement="bottom" title="Clear History">
+              <i class="fas fa-trash-alt fa-xs"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="row">
+          <div class="col-12">
+            <table width="100%">
+              <tr *ngFor="let history of histories" class="text-center">
+                <td style="width:10%">
+                  <a>
+                    <i [className]="history.original.status>=200 && history.original.status<300 ?'fas fa-check-circle fa-xs' : 'fas fa-times fa-xs'"
+                       [style.color]="history.original.status>=200 && history.original.status<300 ?'Green' : 'Red'">
+                    </i>
+                  </a>
+                </td>
+                <td style="width:5%">
+                  <img [src]="history.request.methodName=='GET'
+                       ?'./assets/get.png'
+                       :history.request.methodName=='POST'
+                          ?'./assets/post.png'
+                          :history.request.methodName=='PUT'
+                              ?'./assets/put.png'
+                              :'./assets/delete.png'" width="25" height="15" />
+                </td>
+                <td style="width:90%" class="text-left">
+                  <a href="#" style="font-size:smaller" (click)="bindHistory(history)" data-toggle="tooltip" data-placement="bottom" [title]="history.request.apiUrl">
+                    {{history.request.apiUrl.substring(0,30)}}{{history.request.apiUrl.length>30 ?'...':''}}
+                  </a>
+                </td>
+                <td>
+                  <a href="#" (click)="RemoveHistory(history)" role="button">
+                    <i class="fas fa-trash fa-xs" style="color:red"></i>
+                  </a>
+                </td>
+              </tr>
+            </table>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>

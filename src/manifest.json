@@ -1,0 +1,23 @@
+{
+  "name": "API Tester",
+  "version": "1.0",
+  "description": "Generates REST API request",
+  "manifest_version": 2,
+  "icons": {
+    "16": "assets/icon.png",
+    "48": "assets/icon.png",
+    "128": "assets/icon.png"
+  },
+  "browser_action": {
+    "default_icon": "assets/icon.png"
+  },
+  "permissions": [
+    "activeTab",
+    "tabs",
+    "background"
+  ],
+  "background": {
+    "scripts": [ "background.js" ],
+    "persistent": false
+  }
+}

@@ -1,0 +1,98 @@
+<div class="row">
+  <div class="col-2">
+    <select class="form-control" [(ngModel)]="request.methodName">
+      <option value="GET">GET</option>
+      <option value="POST">POST</option>
+      <option value="PUT">PUT</option>
+      <option value="DELETE">DELETE</option>
+    </select>
+  </div>
+  <div class="col-8">
+    <input class="form-control" placeholder="URL here..." [(ngModel)]="request.apiUrl" />
+  </div>
+  <div class="col-2">
+    <button class="btn btn-info" (click)="send()" [disabled]="isLoading" style="width:100%" type="submit">Send</button>
+  </div>
+</div>
+<div *ngIf="isLoading" class="row text-center">
+  <div class="col-12">
+    <div class="load-bar">
+      <div class="bar"></div>
+      <div class="bar"></div>
+      <div class="bar"></div>
+    </div>
+  </div>
+</div>
+<br />
+<div class="row">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-header">
+        <div class="row">
+          <div class="col-10">Queries</div>
+          <div class="col-2 text-right">
+            <button class="btn btn-info btn-sm" (click)="addQuery()" style="width:100%">Add</button>
+          </div>
+        </div>
+      </div>
+      <div class="card-body" *ngIf="request.queries.length>0">
+        <table>
+          <tr>
+            <th width="45%">Key</th>
+            <th width="50%">Value</th>
+            <th width="5%"></th>
+          </tr>
+          <tr *ngFor="let query of request.queries">
+            <td><input class="form-control " [(ngModel)]="query.key" /></td>
+            <td><input class="form-control " [(ngModel)]="query.value" /></td>
+            <td>
+              <button class="btn btn-danger" style="width:100%" (click)="removeQuery(query)"><i class="fas fa-trash"></i></button>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+<br />
+<div class="row">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-header">
+        <div class="row">
+          <div class="col-10">Headers</div>
+          <div class="col-2 text-right">
+            <button class="btn btn-info btn-sm" (click)="addHeader()" style="width:100%">Add</button>
+          </div>
+        </div>
+      </div>
+      <div class="card-body" *ngIf="request.headers.length>0">
+        <table>
+          <tr>
+            <th width="45%">Key</th>
+            <th width="50%">Value</th>
+            <th width="5%"></th>
+          </tr>
+          <tr *ngFor="let header of request.headers">
+            <td><input class="form-control " [(ngModel)]="header.key" /></td>
+            <td><input class="form-control " [(ngModel)]="header.value" /></td>
+            <td>
+              <button class="btn btn-danger" style="width:100%" (click)="removeHeader(header.key)"><i class="fas fa-trash"></i></button>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+<br *ngIf="request.methodName=='POST' || request.methodName=='PUT'" />
+<div class="row" *ngIf="request.methodName=='POST' || request.methodName=='PUT'">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-header">Body</div>
+      <div class="card-body">
+        <textarea class="form-control" style="height:80px;width:100%" [(ngModel)]="request.requestBody"></textarea>
+      </div>
+    </div>
+  </div>
+</div>
