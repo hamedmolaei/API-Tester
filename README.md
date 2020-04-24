@@ -2,7 +2,6 @@
 Test any REST APIs by creating all kinds of request types (GET, POST, PUT &amp; DELETE)
 
 <br>
-<br>
 <hr>
 
 <h3>How to use</h3>
