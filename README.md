@@ -5,11 +5,13 @@ Test any REST APIs by creating all kinds of request types (GET, POST, PUT &amp; 
 <hr>
 
 <h3>How to use</h3>
-After clonning or downloading the source code first restore all required packages. To do this follow steps below:
+After clonning or downloading the source code do following steps below:
 <ul>
   <li>Open command prompt</li>
   <li>Browse into root folder of the project</li>
   <li>Restore packages by running 'npm install .'
+  <li>Run 'ng serve' command</li>
+  <li>Open a browser and enter address 'http://localhost:4200'</li>
 </ul>
 
 <br>
