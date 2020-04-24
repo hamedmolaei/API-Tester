@@ -13,6 +13,8 @@ After clonning or downloading the source code first restore all required package
   <li>Restore packages by running 'npm install .'
 </ul>
 
+<br>
+
 <h3>Use as a Google Chrome Extension</h3>
 You can use this app as a Google Chrome extension, to do this follow steps below:
 <ul>
